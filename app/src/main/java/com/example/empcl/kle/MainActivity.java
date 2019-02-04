@@ -1,9 +1,12 @@
 package com.example.empcl.kle;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.empcl.kle.lib.MyActivity;
+
+public class MainActivity extends MyActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,4 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }
