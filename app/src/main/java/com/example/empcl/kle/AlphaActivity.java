@@ -80,6 +80,7 @@ public class AlphaActivity extends MyActivity {
 
 
 
+
     MediaPlayer mp;
 
     void update_data() {
