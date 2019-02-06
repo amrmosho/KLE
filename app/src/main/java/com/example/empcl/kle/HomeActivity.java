@@ -16,6 +16,10 @@ public class HomeActivity extends MyActivity {
         setContentView(R.layout.activity_home);
     }
 
+
+
+
+
     public void gotoAlpha(View view) {
         Intent i = new Intent(this, AlphaActivity.class);
         startActivity(i);
@@ -49,6 +53,11 @@ public class HomeActivity extends MyActivity {
         i.putExtra("type" ,"fruits");
         startActivity(i);
     }
+
+
+
+
+
 
     public void anmials(View view) {
 

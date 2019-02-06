@@ -1,5 +1,6 @@
 package com.example.empcl.kle;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +15,14 @@ import com.example.empcl.kle.lib.MyActivity;
 import java.util.Random;
 
 public class AlphaActivity extends MyActivity {
+
+
     ImageView img_item;
     TextView txt_item,img_item_small;
     ImageView reloadbck,bcktohomebtn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +30,22 @@ public class AlphaActivity extends MyActivity {
 
         img_item = findViewById(R.id.img_item);
         txt_item = findViewById(R.id.txt_item);
+
         img_item_small = findViewById(R.id.txt_item3);
 
         reloadbck = findViewById(R.id.reloadbck);
         bcktohomebtn = findViewById(R.id.bcktohomebtn);
 
+
+
+
+
+
         reloadbck.setVisibility(View.GONE);
         bcktohomebtn.setVisibility(View.GONE);
+
+
+
 
         update_data();
     }
@@ -50,17 +65,10 @@ public class AlphaActivity extends MyActivity {
             index--;
             reloadbck.setVisibility(View.VISIBLE);
             bcktohomebtn.setVisibility(View.VISIBLE);
-
-            //   images_index = 0;
         }else{
-
-
-
             update_data();
 
         }
-
-
 
     }
 
@@ -88,13 +96,18 @@ public class AlphaActivity extends MyActivity {
             mp.stop();
         }
          mp = MediaPlayer.create(this, sound[index]);
-
         mp.start();
+
+
+
         int idx = new Random().nextInt(closeAnimation.length);
 
         Animation a = AnimationUtils.loadAnimation(this, closeAnimation[idx]);
         txt_item.startAnimation(a);
+
         txt_item.setText(text[index]);
+
+
         Animation o = AnimationUtils.loadAnimation(this, openAnimation[idx]);
         txt_item.startAnimation(o);
 
@@ -114,13 +127,40 @@ public class AlphaActivity extends MyActivity {
         int idx = new Random().nextInt(closeAnimation.length);
 
         Animation a = AnimationUtils.loadAnimation(this, closeAnimation[idx]);
+
+
         img_item.startAnimation(a);
         img_item.setImageResource(images[index]);
+
+
         Animation o = AnimationUtils.loadAnimation(this, openAnimation[idx]);
         img_item.startAnimation(o);
 
 
     }
+
+
+
+
+
+
+
+    public void gotohome(View view) {
+
+        startActivity(new Intent(this ,HomeActivity.class));
+    }
+
+
+
+
+    public void reload(View view) {
+        finish();
+        startActivity(getIntent());
+
+
+    }
+
+
 
 
 
@@ -138,32 +178,29 @@ public class AlphaActivity extends MyActivity {
 
 
     };
+
+
+
+
     String[] text = {
-
-
             "A", "B", "C" , "D", "E", "F" , "G", "H", "I" , "J", "K", "L" , "M", "N", "O" , "P", "Q", "R"
             , "S"
             , "T"
             , "U"
             , "V"
-            , "W"
-            , "x", "Y", "X"
+            , "W" , "x", "Y", "X"};
 
-
-
-
-    };
 
     String[] stext = {
 
 
-            " Apple", "Ball",  "Cat" , " Dog", "Egg", "Flower" , "Glasses", "Hat", "Ice Cream" , "Juice", "Key", "L" , "M", "N", "O" , "P", "Q", "R"
-            , "S"
-            , "T"
-            , "U"
-            , "V"
-            , "W"
-            , "x", "Y", "X"
+            " Apple", "Ball",  "Cat" , " Dog", "Egg", "Flower" , "Glasses", "Hat", "Ice Cream" , "Juice", "king", "lemon" , "money", "number", "open" , "people", "queen", "red"
+            , "summer"
+            , "time"
+            , "uniform"
+            , "visa"
+            , "woman"
+            , "x-ray", "yellow", "zebra"
 
 
 

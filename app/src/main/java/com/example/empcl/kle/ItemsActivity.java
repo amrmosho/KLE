@@ -18,6 +18,8 @@ public class ItemsActivity extends MyActivity {
     TextView txt_item,myTitle;
     ImageView reloadbck,bcktohomebtn;
 
+    String  type ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +29,25 @@ public class ItemsActivity extends MyActivity {
         img_item = findViewById(R.id.img_item);
         txt_item = findViewById(R.id.txt_item);
         myTitle = findViewById(R.id.myTitle);
+
+
         if ( getIntent().hasExtra("type")){
 
             type = getIntent().getStringExtra("type");
 
         }
+
+
+
+
         update_data();
 
 
         reloadbck = findViewById(R.id.reloadbck);
         bcktohomebtn = findViewById(R.id.bcktohomebtn);
+
+
+
         reloadbck.setVisibility(View.GONE);
         bcktohomebtn.setVisibility(View.GONE);
 
@@ -49,7 +60,7 @@ public class ItemsActivity extends MyActivity {
 
 
 
-    String  type ="";
+
     void update_data() {
 
         if (type.equalsIgnoreCase("months")){
@@ -62,7 +73,8 @@ public class ItemsActivity extends MyActivity {
             images = images_days;
             sound = sound_days;
             text = text_days;
-            myTitle.setText("Day");
+            myTitle.setText("Days");
+
         }else   if (type.equalsIgnoreCase("anmials")){
             images = images_animals;
             sound = sound_animals;
@@ -74,6 +86,9 @@ public class ItemsActivity extends MyActivity {
             text = text_fruits;
             myTitle.setText("Fruits");
         }
+
+
+
 
         update_image();
         update_Text();
@@ -88,6 +103,8 @@ public class ItemsActivity extends MyActivity {
 
     public void next(View view) {
         images_index++;
+
+
         if (images_index >= (images.length)) {
             images_index--;
             reloadbck.setVisibility(View.VISIBLE);
@@ -124,17 +141,24 @@ public class ItemsActivity extends MyActivity {
 
     MediaPlayer mp;
     void update_Text() {
+
+
         if (mp !=null){
             mp.stop();
         }
          mp = MediaPlayer.create(this, sound[images_index]);
-
         mp.start();
+
+
         int idx = new Random().nextInt(closeAnimation.length);
 
         Animation a = AnimationUtils.loadAnimation(this, closeAnimation[idx]);
+
+
         txt_item.startAnimation(a);
         txt_item.setText(text[images_index]);
+
+
         Animation o = AnimationUtils.loadAnimation(this, openAnimation[idx]);
         txt_item.startAnimation(o);
 
@@ -148,12 +172,21 @@ public class ItemsActivity extends MyActivity {
 
         Animation a = AnimationUtils.loadAnimation(this, closeAnimation[idx]);
         img_item.startAnimation(a);
+
         img_item.setImageResource(images[images_index]);
+
+
         Animation o = AnimationUtils.loadAnimation(this, openAnimation[idx]);
         img_item.startAnimation(o);
 
 
     }
+
+
+
+
+
+
 
 
     int[] images = {};
@@ -162,6 +195,13 @@ public class ItemsActivity extends MyActivity {
 
 
 
+
+
+
+
+
+
+    // fruits data
 
 
     int[] images_fruits = {
@@ -176,7 +216,7 @@ public class ItemsActivity extends MyActivity {
 
 
 
-
+    // animals data
 
     int[] images_animals = {
             R.drawable.animals_img_1,
@@ -188,6 +228,11 @@ public class ItemsActivity extends MyActivity {
     int[] sound_animals = {R.raw.animals_sound_1, R.raw.animals_sound_2, R.raw.animals_sound_3};
 
 
+
+
+
+
+    // months data
 
     int[] images_moths = {
             R.drawable.moths_image_jan,
@@ -224,6 +269,8 @@ public class ItemsActivity extends MyActivity {
 
 
 
+
+    // days data
 
     int[] images_days = {
             R.drawable.img_days_s,
